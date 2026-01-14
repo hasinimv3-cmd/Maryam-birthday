@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday Maryam 👑</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', Arial, sans-serif;
+      background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      color: #333;
+      text-align: center;
+      overflow: hidden;
+    }
+    .card {
+      background: white;
+      padding: 30px 25px;
+      border-radius: 25px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+      max-width: 420px;
+      animation: pop 1s ease;
+      z-index: 2;
+    }
+    h1 {
+      font-size: 2.4em;
+      margin-bottom: 10px;
+      color: #ff5fa2;
+    }
+    p {
+      font-size: 1.05em;
+      line-height: 1.7;
+    }
+    .photos {
+      margin: 15px 0;
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .photos img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 15px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    }
+    .from {
+      margin-top: 20px;
+      font-weight: bold;
+      color: #555;
+    }
+    .emojis {
+      font-size: 1.8em;
+      margin-top: 15px;
+      animation: float 2s infinite ease-in-out;
+    }
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+    }
+    .lock {
+      background: white;
+      padding: 25px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+      max-width: 300px;
+    }
+    input {
+      padding: 10px;
+      width: 100%;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      margin-top: 10px;
+    }
+    button {
+      margin-top: 10px;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 10px;
+      background: #ff5fa2;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .confetti {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      background: pink;
+      top: -10px;
+      animation: fall linear infinite;
+      z-index: 1;
+    }
+    @keyframes pop {
+      0% { transform: scale(0.7); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
+    }
+    @keyframes fall {
+      to { transform: translateY(110vh) rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- PASSWORD SCREEN -->
+<div class="overlay" id="lockScreen">
+  <div class="lock">
+    <h2>👑 Enter Queen Password 👑</h2>
+    <input type="password" id="pwd" placeholder="ONLY QUEEN" />
+    <button onclick="unlock()">Unlock 💖</button>
+  </div>
+</div>
+
+<!-- BACKGROUND MUSIC -->
+<audio id="music" loop>
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+</audio>
+
+<!-- MAIN CARD -->
+<div class="card">
+  <h1>Happy Birthday Maryam 👑🎂</h1>
+
+  <div class="photos">
+    <!-- YOU WILL REPLACE THESE IMAGE LINKS -->
+    <img src="https://via.placeholder.com/150" />
+    <img src="https://via.placeholder.com/150" />
+    <img src="https://via.placeholder.com/150" />
+  </div>
+
+  <p>
+    HAPPY BDAY MY QUEEN !! 👑🥳 I hope u hv a blast and u enjoy ur bday 🎂💖<br /><br />
+    ILYSFM and I legit cldnt imagine my life wtout u at all 😭🫶 You mean the absolute WORLD to me and yes u r mine and mine ONLY 💋🤭<br /><br />
+    You make me laugh when I am sad and make me feel seen 🥺✨ U r the most gorgeous wifey EVER 😻💍<br /><br />
+    Cheers to our 3 yr friendship 🥂 and I hope it lasts a lifetime 💞 Since it’s ur bday I’m gonna say it —<br />
+    <strong>LYYYY AND SLAYYY MY QUEEN 💅👑</strong><br /><br />
+    Happyyyy bdayyyy twinnnn 🥳🤭🎂🎀🫶 Ilysfmmm brooo u r my favorite wifey ykk 🛐🛐🛐
+  </p>
+
+  <div class="emojis">🎉🎈💖👑🎀</div>
+  <div class="from">— Your Shortyy 💕</div>
+</div>
+
+<script>
+  function unlock() {
+    const pwd = document.getElementById('pwd').value;
+    if (pwd === 'ONLY QUEEN') {
+      document.getElementById('lockScreen').style.display = 'none';
+      document.getElementById('music').play();
+      startConfetti();
+    } else {
+      alert('Wrong password bestie 🤭');
+    }
+  }
+
+  function startConfetti() {
+    for (let i = 0; i < 60; i++) {
+      const conf = document.createElement('div');
+      conf.className = 'confetti';
+      conf.style.left = Math.random() * 100 + 'vw';
+      conf.style.animationDuration = 2 + Math.random() * 3 + 's';
+      document.body.appendChild(conf);
+      setTimeout(() => conf.remove(), 5000);
+    }
+  }
+</script>
+
+</body>
+</html>
